@@ -440,18 +440,6 @@ st.title(APP_TITLE)
 st.caption(APP_TAGLINE)
 
 # Key status (no input UI)
-api_key_present = bool(get_api_key())
-colA, colB, colC = st.columns([1, 1, 2])
-with colA:
-    st.metric("Gemini", "Enabled" if (api_key_present and model) else "Not connected")
-with colB:
-    st.metric("Model", st.session_state.get("gemini_model_name") or "None")
-with colC:
-    err = st.session_state.get("gemini_init_error", "")
-    if (api_key_present and not model) and err:
-        st.warning(clean_no_emdash(f"Gemini could not initialize. Error: {err}"))
-
-st.divider()
 
 # Step navigation
 nav_cols = st.columns(len(FLOW_STEPS))
